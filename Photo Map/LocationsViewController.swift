@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MapKit
 
 protocol LocationsViewControllerDelegate : class {
     func locationsPickedLocation(controller: LocationsViewController, latitude: NSNumber, longitude: NSNumber)

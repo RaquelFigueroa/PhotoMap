@@ -37,7 +37,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
             vc.sourceType = .photoLibrary
         }
         
-//        mapView.delegate = self
+        mapView.delegate = self
         
     }
     
@@ -79,16 +79,18 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         let locationCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
         let annotation = MKPointAnnotation()
         annotation.coordinate = locationCoordinate
+        print ("picture!")
         annotation.title = "Picture!"
         mapView.addAnnotation(annotation)
         
         self.navigationController?.popToViewController(self, animated: true)
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseID = "myAnnotationView"
         
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
+        
         if (annotationView == nil) {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
             annotationView!.canShowCallout = true
@@ -100,7 +102,4 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         
         return annotationView
     }
-
-    
-
 }
