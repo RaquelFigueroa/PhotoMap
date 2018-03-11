@@ -77,10 +77,9 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func locationsPickedLocation(controller: LocationsViewController, latitude: NSNumber, longitude: NSNumber) {
         let locationCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
-        let annotation = MKPointAnnotation()
+        let annotation = PhotoAnnotation()
         annotation.coordinate = locationCoordinate
-        print ("picture!")
-        annotation.title = "Picture!"
+        annotation.photo = image
         mapView.addAnnotation(annotation)
         
         self.navigationController?.popToViewController(self, animated: true)
@@ -89,17 +88,24 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseID = "myAnnotationView"
         
+        let resizeRenderImageView = UIImageView(frame: CGRect(x:0, y:0, width: 45, height:45))
+        resizeRenderImageView.layer.borderColor = UIColor.white.cgColor
+        resizeRenderImageView.layer.borderWidth = 3.0
+        resizeRenderImageView.contentMode = UIViewContentMode.scaleAspectFill
+        resizeRenderImageView.image = (annotation as? PhotoAnnotation)?.photo
+        
+        UIGraphicsBeginImageContext(resizeRenderImageView.frame.size)
+        resizeRenderImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        _ = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
         
         if (annotationView == nil) {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
             annotationView!.canShowCallout = true
-            annotationView!.leftCalloutAccessoryView = UIImageView(frame: CGRect(x:0, y:0, width: 50, height:50))
+            annotationView!.leftCalloutAccessoryView = resizeRenderImageView
         }
-        
-        let imageView = annotationView?.leftCalloutAccessoryView as! UIImageView
-        imageView.image = UIImage(named: "camera")
-        
         return annotationView
     }
 }

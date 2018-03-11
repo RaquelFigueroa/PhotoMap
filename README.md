@@ -2,7 +2,7 @@
 
 **Photo Map** is an app that allows the user to search for locations using the [Foursquare API](https://developer.foursquare.com/docs) and create a pin with an image annotation.
 
-Time spent: **2** hours spent in total
+Time spent: **5** hours spent in total
 
 ## User Stories
 
@@ -15,15 +15,15 @@ The following **required** user stories are complete:
 
 The following **stretch** user stories are implemented:
 
-- [ ] User sees a custom annotation (+1pt)
+- [x] User sees a custom annotation (+1pt)
 - [ ] User can see Fullscreen Picture (+1pt)
 - [ ] User sees a custom image for the "pin" (+1pt)
 - [ ] List anything else that you can get done to improve the app functionality! (+1-3pts)
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. How to overcome project setbacks. Do they reach out to peers, work through it, use online resources?
+2. What additions were added to this project.
 
 ## Video Walkthrough
 
@@ -35,11 +35,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I had copied code from the tutorial and did not make changes to update a function signature. I spent too long trying to figure out the problem only to find out that it was such an easy solution!
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright 2018 Timothy Lee
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
