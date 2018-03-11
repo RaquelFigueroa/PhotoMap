@@ -44,10 +44,10 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
 
-        // Do something with the images (based on your use case)
+        image = editedImage
 
         // Dismiss UIImagePickerController to go back to your original view controller
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true){ self.performSegue(withIdentifier: "tagSegue", sender: self) }
     }
     
     
